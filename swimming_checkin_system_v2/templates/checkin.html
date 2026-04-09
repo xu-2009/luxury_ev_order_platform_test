@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学员签到 - 沈阳建筑大学游泳馆课程服务系统</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="topbar">
+        <div class="container topbar-inner">
+            <a class="back-link" href="{{ url_for('index') }}">返回首页</a>
+            <div class="page-title">学员签到</div>
+        </div>
+    </header>
+
+    <main class="container narrow">
+        <section class="card">
+            <h1>签到打卡</h1>
+            <p class="section-desc">请填写学员基本信息，提交后系统将自动记录签到时间。</p>
+
+            {% if success_message %}
+            <div class="alert success">{{ success_message }}</div>
+            {% endif %}
+
+            <form method="post" class="form">
+                <label for="student_name">学员姓名</label>
+                <input type="text" id="student_name" name="student_name" placeholder="请输入学员姓名" required>
+
+                <label for="phone">联系电话</label>
+                <input type="tel" id="phone" name="phone" placeholder="请输入手机号" required>
+
+                <label for="course_name">课程名称</label>
+                <input type="text" id="course_name" name="course_name" placeholder="如：游泳基础班" required>
+
+                <button type="submit" class="button primary full">提交签到</button>
+            </form>
+        </section>
+
+        <section class="card">
+            <h2>最近签到记录</h2>
+            {% if recent_checkins %}
+            <div class="list-group">
+                {% for item in recent_checkins %}
+                <div class="list-item">
+                    <div><strong>姓名：</strong>{{ item.student_name }}</div>
+                    <div><strong>电话：</strong>{{ item.phone }}</div>
+                    <div><strong>课程：</strong>{{ item.course_name }}</div>
+                    <div><strong>签到时间：</strong>{{ item.checkin_time }}</div>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <p class="empty-text">暂无签到记录。</p>
+            {% endif %}
+        </section>
+    </main>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>到馆导航 - 沈阳建筑大学游泳馆课程服务系统</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="topbar">
+        <div class="container topbar-inner">
+            <a class="back-link" href="{{ url_for('index') }}">返回首页</a>
+            <div class="page-title">到馆导航</div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="card">
+            <h1>到馆指引说明</h1>
+            <p>上课地点为<strong>沈阳建筑大学游泳馆</strong>。</p>
+            <p>首次到校用户可能需要提前确认路线，建议在出发前查看校门位置、校内步行路线及预计到达时间。</p>
+            <p>当前版本为说明页，后续版本将接入地图或校内导航功能，帮助学员更便捷到馆。</p>
+        </section>
+
+        <section class="card">
+            <h2>示例路线说明</h2>
+            <ul class="info-list">
+                <li>从校门进入后，可沿校内主路步行前往体育场馆区域。</li>
+                <li>游泳馆通常位于校园体育设施附近，建议提前预留步行找路时间。</li>
+                <li>请尽量提前到馆，方便更衣、集合和课前准备。</li>
+                <li>如找不到具体位置，可及时联系教练或课程工作人员协助引导。</li>
+            </ul>
+        </section>
+
+        <section class="card notice-card">
+            <h2>功能提示</h2>
+            <p class="highlight-text">地图功能开发中</p>
+            <p>导航功能即将上线，敬请期待后续版本更新。</p>
+        </section>
+    </main>
+</body>
+</html>

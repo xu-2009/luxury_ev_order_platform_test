@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户反馈 - 沈阳建筑大学游泳馆课程服务系统</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="topbar">
+        <div class="container topbar-inner">
+            <a class="back-link" href="{{ url_for('index') }}">返回首页</a>
+            <div class="page-title">用户反馈</div>
+        </div>
+    </header>
+
+    <main class="container narrow">
+        <section class="card">
+            <h1>课程与服务反馈</h1>
+            <p class="section-desc">欢迎提交您对课程安排、教练服务和到馆体验的反馈意见。</p>
+
+            {% if success_message %}
+            <div class="alert success">{{ success_message }}</div>
+            {% endif %}
+
+            <form method="post" class="form">
+                <label for="student_name">学员姓名</label>
+                <input type="text" id="student_name" name="student_name" placeholder="请输入学员姓名" required>
+
+                <label for="rating">满意度评分</label>
+                <select id="rating" name="rating" required>
+                    <option value="">请选择评分</option>
+                    <option value="1">1 分</option>
+                    <option value="2">2 分</option>
+                    <option value="3">3 分</option>
+                    <option value="4">4 分</option>
+                    <option value="5">5 分</option>
+                </select>
+
+                <label for="feedback_text">反馈内容</label>
+                <textarea id="feedback_text" name="feedback_text" rows="6" placeholder="请输入您的意见或建议" required></textarea>
+
+                <button type="submit" class="button primary full">提交反馈</button>
+            </form>
+        </section>
+    </main>
+</body>
+</html>

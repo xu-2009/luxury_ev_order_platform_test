@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>管理查看 - 沈阳建筑大学游泳馆课程服务系统</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="topbar">
+        <div class="container topbar-inner">
+            <a class="back-link" href="{{ url_for('index') }}">返回首页</a>
+            <div class="page-title">管理查看</div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="admin-grid">
+            <div class="card">
+                <h1>最近签到记录</h1>
+                {% if checkin_records %}
+                <div class="table-like">
+                    {% for item in checkin_records %}
+                    <div class="record-card">
+                        <div><strong>姓名：</strong>{{ item.student_name }}</div>
+                        <div><strong>电话：</strong>{{ item.phone }}</div>
+                        <div><strong>课程：</strong>{{ item.course_name }}</div>
+                        <div><strong>签到时间：</strong>{{ item.checkin_time }}</div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <p class="empty-text">暂无签到记录。</p>
+                {% endif %}
+            </div>
+
+            <div class="card">
+                <h1>最近用户反馈</h1>
+                {% if feedback_records %}
+                <div class="table-like">
+                    {% for item in feedback_records %}
+                    <div class="record-card">
+                        <div><strong>姓名：</strong>{{ item.student_name }}</div>
+                        <div><strong>评分：</strong>{{ item.rating }} 分</div>
+                        <div><strong>反馈内容：</strong>{{ item.feedback_text }}</div>
+                        <div><strong>提交时间：</strong>{{ item.submit_time }}</div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <p class="empty-text">暂无反馈记录。</p>
+                {% endif %}
+            </div>
+        </section>
+    </main>
+</body>
+</html>
