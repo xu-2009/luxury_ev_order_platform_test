@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ model.name }} | {{ brand.name }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="site-header glass dark-header">
+        <div class="container nav-wrap">
+            <a class="brand-mark" href="{{ url_for('index') }}">{{ brand.name }}</a>
+            <nav class="main-nav">
+                <a href="{{ url_for('models') }}">Models</a>
+                <a href="{{ url_for('compare') }}">Compare</a>
+                <a href="{{ url_for('test_drive') }}">Test Drive</a>
+                <a href="{{ url_for('support') }}">Support</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="page-shell">
+        <section class="page-hero model-hero">
+            <div class="container model-hero-grid">
+                <div>
+                    <span class="eyebrow">{{ model.tagline }}</span>
+                    <h1>{{ model.name }}</h1>
+                    <p>{{ model.positioning }}</p>
+                    <div class="hero-actions">
+                        <a class="btn btn-primary" href="{{ url_for('configure', slug=model.slug) }}">Configure</a>
+                        <a class="btn btn-secondary" href="{{ url_for('test_drive') }}">Book Test Drive</a>
+                    </div>
+                </div>
+                <div class="image-placeholder premium-card">
+                    <div class="placeholder-art">{{ model.image_label }}</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container detail-grid">
+                <div class="premium-card info-panel">
+                    <span class="eyebrow">Core Highlights</span>
+                    <ul class="bullet-list">
+                        {% for item in model.highlights %}
+                        <li>{{ item }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="premium-card info-panel">
+                    <span class="eyebrow">Specification Summary</span>
+                    <div class="spec-grid">
+                        {% for key, value in model.spec_summary.items() %}
+                        <div class="spec-box">
+                            <span>{{ key }}</span>
+                            <strong>{{ value }}</strong>
+                        </div>
+                        {% endfor %}
+                        <div class="spec-box">
+                            <span>Range</span>
+                            <strong>{{ model.range }}</strong>
+                        </div>
+                        <div class="spec-box">
+                            <span>0-100 km/h</span>
+                            <strong>{{ model.acceleration }}</strong>
+                        </div>
+                        <div class="spec-box">
+                            <span>Top Speed</span>
+                            <strong>{{ model.top_speed }}</strong>
+                        </div>
+                        <div class="spec-box">
+                            <span>Starting Price</span>
+                            <strong>¥{{ "{:,.0f}".format(model.starting_price) }}</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Test Drives | {{ brand.name }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="site-header glass dark-header">
+        <div class="container nav-wrap">
+            <a class="brand-mark" href="{{ url_for('index') }}">{{ brand.name }}</a>
+            <nav class="main-nav">
+                <a href="{{ url_for('account_orders') }}">My Orders</a>
+                <a href="{{ url_for('account_test_drives') }}" class="active">My Test Drives</a>
+                <a href="{{ url_for('test_drive') }}">Book Drive</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="account-shell">
+        <aside class="account-sidebar">
+            <h3>Account</h3>
+            <a href="{{ url_for('account_orders') }}">Orders</a>
+            <a class="active" href="{{ url_for('account_test_drives') }}">Test Drives</a>
+        </aside>
+
+        <section class="account-content">
+            <div class="section-heading left">
+                <span class="eyebrow">Customer Center</span>
+                <h1>Your test drive history</h1>
+                <p>Review upcoming and completed drive appointments across Aureon studios and experience centers.</p>
+            </div>
+            <div class="table-card premium-card">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Model</th>
+                            <th>Date</th>
+                            <th>Location</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in test_drives %}
+                        <tr>
+                            <td>{{ item.model }}</td>
+                            <td>{{ item.date }}</td>
+                            <td>{{ item.location }}</td>
+                            <td><span class="status {{ item.status|lower|replace(' ', '-') }}">{{ item.status }}</span></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

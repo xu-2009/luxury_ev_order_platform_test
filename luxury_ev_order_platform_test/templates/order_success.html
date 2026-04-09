@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Success | {{ brand.name }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <main class="success-page">
+        <div class="success-card premium-card">
+            <div class="success-icon">✓</div>
+            <span class="eyebrow">Order Submitted</span>
+            <h1>Your {{ model_name }} order has been received</h1>
+            <p>Our product specialist team will review your request and contact you with the next steps.</p>
+            <div class="success-meta">
+                <div><span>Order Reference</span><strong>{{ order_ref }}</strong></div>
+                <div><span>Estimated Total</span><strong>{{ total }}</strong></div>
+            </div>
+            <div class="hero-actions">
+                <a class="btn btn-primary" href="{{ url_for('index') }}">Return Home</a>
+                <a class="btn btn-secondary" href="{{ url_for('account_orders') }}">View My Orders</a>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

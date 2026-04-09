@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Orders | {{ brand.name }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <main class="dashboard-shell">
+        <aside class="dashboard-sidebar">
+            <div class="dashboard-brand">{{ brand.name }}</div>
+            <a href="{{ url_for('dashboard') }}">Overview</a>
+            <a class="active" href="{{ url_for('dashboard_orders') }}">Orders</a>
+            <a href="{{ url_for('dashboard_test_drives') }}">Test Drives</a>
+            <a href="{{ url_for('dashboard_customers') }}">Customers</a>
+            <a href="{{ url_for('index') }}">Back to Site</a>
+        </aside>
+
+        <section class="dashboard-content">
+            <div class="dashboard-topbar">
+                <div>
+                    <span class="eyebrow">Order Management</span>
+                    <h1>All customer orders</h1>
+                </div>
+            </div>
+
+            <div class="filter-bar premium-card">
+                <div class="filter-chip">Status: All</div>
+                <div class="filter-chip">Model: All</div>
+                <div class="filter-chip">Region: China</div>
+                <div class="filter-chip">Delivery Window: 90 Days</div>
+            </div>
+
+            <div class="table-card premium-card">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Customer</th>
+                            <th>Model</th>
+                            <th>Trim</th>
+                            <th>Status</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for order in orders %}
+                        <tr>
+                            <td>{{ order.order_id }}</td>
+                            <td>{{ order.customer }}</td>
+                            <td>{{ order.model }}</td>
+                            <td>{{ order.trim }}</td>
+                            <td><span class="status {{ order.status|lower|replace(' ', '-') }}">{{ order.status }}</span></td>
+                            <td>{{ order.total }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

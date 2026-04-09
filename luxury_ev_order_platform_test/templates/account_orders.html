@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Orders | {{ brand.name }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="site-header glass dark-header">
+        <div class="container nav-wrap">
+            <a class="brand-mark" href="{{ url_for('index') }}">{{ brand.name }}</a>
+            <nav class="main-nav">
+                <a href="{{ url_for('account_orders') }}" class="active">My Orders</a>
+                <a href="{{ url_for('account_test_drives') }}">My Test Drives</a>
+                <a href="{{ url_for('models') }}">Models</a>
+                <a href="{{ url_for('support') }}">Support</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="account-shell">
+        <aside class="account-sidebar">
+            <h3>Account</h3>
+            <a class="active" href="{{ url_for('account_orders') }}">Orders</a>
+            <a href="{{ url_for('account_test_drives') }}">Test Drives</a>
+        </aside>
+
+        <section class="account-content">
+            <div class="section-heading left">
+                <span class="eyebrow">Customer Center</span>
+                <h1>Your vehicle orders</h1>
+                <p>Track status, estimated delivery timing, and order totals in one refined dashboard.</p>
+            </div>
+            <div class="table-card premium-card">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Model</th>
+                            <th>Status</th>
+                            <th>Estimated Delivery</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for order in orders %}
+                        <tr>
+                            <td>{{ order.order_id }}</td>
+                            <td>{{ order.model }}</td>
+                            <td><span class="status {{ order.status|lower|replace(' ', '-') }}">{{ order.status }}</span></td>
+                            <td>{{ order.estimated_delivery }}</td>
+                            <td>{{ order.total }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

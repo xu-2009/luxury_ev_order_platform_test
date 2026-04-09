@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Test Drives | {{ brand.name }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <main class="dashboard-shell">
+        <aside class="dashboard-sidebar">
+            <div class="dashboard-brand">{{ brand.name }}</div>
+            <a href="{{ url_for('dashboard') }}">Overview</a>
+            <a href="{{ url_for('dashboard_orders') }}">Orders</a>
+            <a class="active" href="{{ url_for('dashboard_test_drives') }}">Test Drives</a>
+            <a href="{{ url_for('dashboard_customers') }}">Customers</a>
+            <a href="{{ url_for('index') }}">Back to Site</a>
+        </aside>
+
+        <section class="dashboard-content">
+            <div class="dashboard-topbar">
+                <div>
+                    <span class="eyebrow">Test Drive Requests</span>
+                    <h1>Appointment management</h1>
+                </div>
+            </div>
+
+            <div class="table-card premium-card">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Customer</th>
+                            <th>Model</th>
+                            <th>Date</th>
+                            <th>Location</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in test_drives %}
+                        <tr>
+                            <td>{{ item.customer }}</td>
+                            <td>{{ item.model }}</td>
+                            <td>{{ item.date }}</td>
+                            <td>{{ item.location }}</td>
+                            <td><span class="status {{ item.status|lower|replace(' ', '-') }}">{{ item.status }}</span></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

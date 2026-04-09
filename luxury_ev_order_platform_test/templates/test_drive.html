@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Drive | {{ brand.name }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="site-header glass dark-header">
+        <div class="container nav-wrap">
+            <a class="brand-mark" href="{{ url_for('index') }}">{{ brand.name }}</a>
+            <nav class="main-nav">
+                <a href="{{ url_for('models') }}">Models</a>
+                <a href="{{ url_for('test_drive') }}" class="active">Test Drive</a>
+                <a href="{{ url_for('account_test_drives') }}">My Test Drives</a>
+                <a href="{{ url_for('support') }}">Support</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="page-shell">
+        <section class="test-drive-hero">
+            <div class="container">
+                <span class="eyebrow">Private Appointment</span>
+                <h1>Experience electric luxury firsthand</h1>
+                <p>Reserve a tailored test drive at an Aureon studio or curated urban route near you.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container review-layout">
+                <div class="premium-card form-panel">
+                    {% if success %}
+                    <div class="alert alert-success">Your test drive request has been submitted successfully. Our team will contact you shortly.</div>
+                    {% endif %}
+                    {% if errors %}
+                    <div class="alert alert-error">
+                        {% for error in errors %}
+                        <div>{{ error }}</div>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                    <form method="post" class="styled-form">
+                        <div class="form-grid">
+                            <div>
+                                <label>Full Name</label>
+                                <input type="text" name="full_name" value="{{ form_data.full_name }}">
+                            </div>
+                            <div>
+                                <label>Email</label>
+                                <input type="email" name="email" value="{{ form_data.email }}">
+                            </div>
+                            <div>
+                                <label>Phone</label>
+                                <input type="text" name="phone" value="{{ form_data.phone }}">
+                            </div>
+                            <div>
+                                <label>Preferred Model</label>
+                                <select name="preferred_model">
+                                    {% for model in models %}
+                                    <option value="{{ model.name }}" {% if form_data.preferred_model == model.name %}selected{% endif %}>{{ model.name }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div>
+                                <label>Preferred Date</label>
+                                <input type="date" name="preferred_date" value="{{ form_data.preferred_date }}">
+                            </div>
+                            <div>
+                                <label>Preferred Location</label>
+                                <input type="text" name="preferred_location" placeholder="e.g. Shanghai Studio" value="{{ form_data.preferred_location }}">
+                            </div>
+                            <div class="full-span">
+                                <label>Notes</label>
+                                <textarea name="notes" rows="5">{{ form_data.notes }}</textarea>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary btn-wide" type="submit">Request Test Drive</button>
+                    </form>
+                </div>
+
+                <aside class="premium-card summary-panel">
+                    <span class="eyebrow">Why book</span>
+                    <h3>Concierge-led test drive experience</h3>
+                    <div class="summary-line"><span>Model consultation</span><strong>Included</strong></div>
+                    <div class="summary-line"><span>Drive route</span><strong>Curated</strong></div>
+                    <div class="summary-line"><span>Product specialist</span><strong>Assigned</strong></div>
+                    <div class="summary-line"><span>Charging overview</span><strong>Included</strong></div>
+                </aside>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

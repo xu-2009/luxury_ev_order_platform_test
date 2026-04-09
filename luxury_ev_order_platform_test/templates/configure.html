@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configure {{ model.name }} | {{ brand.name }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="site-header glass dark-header">
+        <div class="container nav-wrap">
+            <a class="brand-mark" href="{{ url_for('index') }}">{{ brand.name }}</a>
+            <nav class="main-nav">
+                <a href="{{ url_for('models') }}">Models</a>
+                <a href="{{ url_for('compare') }}">Compare</a>
+                <a href="{{ url_for('account_orders') }}">My Orders</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="page-shell">
+        <section class="page-hero slim-hero">
+            <div class="container">
+                <span class="eyebrow">Vehicle Configuration</span>
+                <h1>Build your {{ model.name }}</h1>
+                <p>{{ model.positioning }}</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container config-layout">
+                <div class="config-main premium-card">
+                    <form action="{{ url_for('order_review') }}" method="get" class="config-form">
+                        <input type="hidden" name="slug" value="{{ model.slug }}">
+
+                        <div class="config-group">
+                            <h3>Trim</h3>
+                            <p class="config-help">Choose your equipment level and cabin atmosphere.</p>
+                            <div class="option-grid">
+                                {% for option, price in trims.items() %}
+                                <label class="option-tile">
+                                    <input type="radio" name="trim" value="{{ option }}" {% if loop.first %}checked{% endif %}>
+                                    <span>{{ option }}</span>
+                                    <small>{% if price == 0 %}Included{% else %}+ ¥{{ "{:,.0f}".format(price) }}{% endif %}</small>
+                                </label>
+                                {% endfor %}
+                            </div>
+                        </div>
+
+                        <div class="config-group">
+                            <h3>Exterior Color</h3>
+                            <p class="config-help">A restrained palette curated for modern luxury surfaces.</p>
+                            <div class="option-grid">
+                                {% for option, price in colors.items() %}
+                                <label class="option-tile">
+                                    <input type="radio" name="color" value="{{ option }}" {% if loop.first %}checked{% endif %}>
+                                    <span>{{ option }}</span>
+                                    <small>{% if price == 0 %}Included{% else %}+ ¥{{ "{:,.0f}".format(price) }}{% endif %}</small>
+                                </label>
+                                {% endfor %}
+                            </div>
+                        </div>
+
+                        <div class="config-group">
+                            <h3>Wheels</h3>
+                            <p class="config-help">Balance ride comfort with sharper visual stance.</p>
+                            <div class="option-grid">
+                                {% for option, price in wheels.items() %}
+                                <label class="option-tile">
+                                    <input type="radio" name="wheels" value="{{ option }}" {% if loop.first %}checked{% endif %}>
+                                    <span>{{ option }}</span>
+                                    <small>{% if price == 0 %}Included{% else %}+ ¥{{ "{:,.0f}".format(price) }}{% endif %}</small>
+                                </label>
+                                {% endfor %}
+                            </div>
+                        </div>
+
+                        <div class="config-group">
+                            <h3>Interior</h3>
+                            <p class="config-help">Select the ambience and seat character that suits your driving style.</p>
+                            <div class="option-grid">
+                                {% for option, price in interiors.items() %}
+                                <label class="option-tile">
+                                    <input type="radio" name="interior" value="{{ option }}" {% if loop.first %}checked{% endif %}>
+                                    <span>{{ option }}</span>
+                                    <small>{% if price == 0 %}Included{% else %}+ ¥{{ "{:,.0f}".format(price) }}{% endif %}</small>
+                                </label>
+                                {% endfor %}
+                            </div>
+                        </div>
+
+                        <div class="config-group">
+                            <h3>Battery</h3>
+                            <p class="config-help">Choose your preferred balance of cost and extended range capability.</p>
+                            <div class="option-grid">
+                                {% for option, price in batteries.items() %}
+                                <label class="option-tile">
+                                    <input type="radio" name="battery" value="{{ option }}" {% if loop.first %}checked{% endif %}>
+                                    <span>{{ option }}</span>
+                                    <small>{% if price == 0 %}Included{% else %}+ ¥{{ "{:,.0f}".format(price) }}{% endif %}</small>
+                                </label>
+                                {% endfor %}
+                            </div>
+                        </div>
+
+                        <div class="config-group">
+                            <h3>Add-ons</h3>
+                            <p class="config-help">Enhance comfort, safety, and seasonal capability.</p>
+                            <div class="option-grid checkbox-grid">
+                                {% for option, price in addons.items() %}
+                                <label class="option-tile">
+                                    <input type="checkbox" name="addons" value="{{ option }}">
+                                    <span>{{ option }}</span>
+                                    <small>+ ¥{{ "{:,.0f}".format(price) }}</small>
+                                </label>
+                                {% endfor %}
+                            </div>
+                        </div>
+
+                        <button class="btn btn-primary btn-wide" type="submit">Continue to Review</button>
+                    </form>
+                </div>
+
+                <aside class="config-sidebar premium-card">
+                    <span class="eyebrow">Order Preview</span>
+                    <h3>{{ model.name }}</h3>
+                    <p>{{ model.tagline }}</p>
+                    <div class="summary-line">
+                        <span>Base Price</span>
+                        <strong>¥{{ "{:,.0f}".format(model.starting_price) }}</strong>
+                    </div>
+                    <div class="summary-line">
+                        <span>Range</span>
+                        <strong>{{ model.range }}</strong>
+                    </div>
+                    <div class="summary-line">
+                        <span>0-100 km/h</span>
+                        <strong>{{ model.acceleration }}</strong>
+                    </div>
+                    <div class="summary-line">
+                        <span>Drive Type</span>
+                        <strong>{{ model.drive_type }}</strong>
+                    </div>
+                    <div class="note-card">
+                        Configuration prices shown are for demo purposes and illustrate a realistic premium ordering journey.
+                    </div>
+                </aside>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

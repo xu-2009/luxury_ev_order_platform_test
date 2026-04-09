@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | {{ brand.name }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="site-header glass dark-header">
+        <div class="container nav-wrap">
+            <a class="brand-mark" href="{{ url_for('index') }}">{{ brand.name }}</a>
+            <nav class="main-nav">
+                <a href="{{ url_for('models') }}">Models</a>
+                <a href="{{ url_for('about') }}" class="active">About</a>
+                <a href="{{ url_for('support') }}">Support</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="page-shell">
+        <section class="page-hero slim-hero">
+            <div class="container">
+                <span class="eyebrow">Brand Philosophy</span>
+                <h1>Designing the future of electric luxury with quiet confidence</h1>
+                <p>Aureon Motors exists to merge emotional design, intelligent engineering, and sustainable premium mobility.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container story-grid">
+                <div class="premium-card info-panel">
+                    <h2>Brand Story</h2>
+                    <p>Aureon Motors was envisioned as a new-generation luxury EV marque for customers who expect performance, calm, and digital sophistication in equal measure. Our vehicles are shaped around timeless surfaces, seamless technology, and a deeply considered ownership journey.</p>
+                </div>
+                <div class="premium-card info-panel">
+                    <h2>Our Philosophy</h2>
+                    <p>We believe luxury should be measured not only by materials, but by reduction of friction: less noise, fewer compromises, more intelligence, and a greater sense of control. Every interaction is meant to feel deliberate, elegant, and human-centered.</p>
+                </div>
+                <div class="premium-card info-panel">
+                    <h2>Sustainability</h2>
+                    <p>From responsibly selected interior materials to efficient battery thermal systems and long-life software-defined architectures, Aureon pursues sustainability through durable design, reduced waste, and long-term product relevance.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

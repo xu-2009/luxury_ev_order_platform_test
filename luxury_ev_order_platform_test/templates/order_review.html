@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Review | {{ brand.name }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="site-header glass dark-header">
+        <div class="container nav-wrap">
+            <a class="brand-mark" href="{{ url_for('index') }}">{{ brand.name }}</a>
+            <nav class="main-nav">
+                <a href="{{ url_for('models') }}">Models</a>
+                <a href="{{ url_for('account_orders') }}">My Orders</a>
+                <a href="{{ url_for('support') }}">Support</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="page-shell">
+        <section class="page-hero slim-hero">
+            <div class="container">
+                <span class="eyebrow">Order Review</span>
+                <h1>Confirm your vehicle and delivery details</h1>
+                <p>Review your selected configuration and submit your order request.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container review-layout">
+                <div class="premium-card form-panel">
+                    {% if errors %}
+                    <div class="alert alert-error">
+                        {% for error in errors %}
+                        <div>{{ error }}</div>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+
+                    <form method="post" class="styled-form">
+                        <input type="hidden" name="slug" value="{{ summary.slug }}">
+                        <input type="hidden" name="trim" value="{{ summary.trim }}">
+                        <input type="hidden" name="color" value="{{ summary.color }}">
+                        <input type="hidden" name="wheels" value="{{ summary.wheels }}">
+                        <input type="hidden" name="interior" value="{{ summary.interior }}">
+                        <input type="hidden" name="battery" value="{{ summary.battery }}">
+                        {% for addon in summary.addons %}
+                        <input type="hidden" name="addons" value="{{ addon }}">
+                        {% endfor %}
+
+                        <div class="form-grid">
+                            <div>
+                                <label>Full Name</label>
+                                <input type="text" name="full_name" value="{{ form_data.full_name }}">
+                            </div>
+                            <div>
+                                <label>Email</label>
+                                <input type="email" name="email" value="{{ form_data.email }}">
+                            </div>
+                            <div>
+                                <label>Phone</label>
+                                <input type="text" name="phone" value="{{ form_data.phone }}">
+                            </div>
+                            <div>
+                                <label>City</label>
+                                <input type="text" name="city" value="{{ form_data.city }}">
+                            </div>
+                            <div class="full-span">
+                                <label>Payment Preference</label>
+                                <select name="payment_preference">
+                                    <option value="">Select preference</option>
+                                    <option value="Full Payment" {% if form_data.payment_preference == 'Full Payment' %}selected{% endif %}>Full Payment</option>
+                                    <option value="Financing" {% if form_data.payment_preference == 'Financing' %}selected{% endif %}>Financing</option>
+                                    <option value="Corporate Purchase" {% if form_data.payment_preference == 'Corporate Purchase' %}selected{% endif %}>Corporate Purchase</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-primary btn-wide" type="submit">Place Order</button>
+                    </form>
+                </div>
+
+                <aside class="premium-card summary-panel">
+                    <span class="eyebrow">Order Summary</span>
+                    <h3>{{ model.name }}</h3>
+                    <div class="summary-line"><span>Model</span><strong>{{ model.name }}</strong></div>
+                    <div class="summary-line"><span>Trim</span><strong>{{ summary.trim }}</strong></div>
+                    <div class="summary-line"><span>Color</span><strong>{{ summary.color }}</strong></div>
+                    <div class="summary-line"><span>Wheels</span><strong>{{ summary.wheels }}</strong></div>
+                    <div class="summary-line"><span>Interior</span><strong>{{ summary.interior }}</strong></div>
+                    <div class="summary-line"><span>Battery</span><strong>{{ summary.battery }}</strong></div>
+                    <div class="summary-line"><span>Add-ons</span><strong>{{ summary.addons|join(', ') if summary.addons else 'None' }}</strong></div>
+                    <div class="summary-line total-line"><span>Estimated Total</span><strong>{{ estimated_total }}</strong></div>
+                </aside>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

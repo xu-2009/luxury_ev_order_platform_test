@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Customers | {{ brand.name }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <main class="dashboard-shell">
+        <aside class="dashboard-sidebar">
+            <div class="dashboard-brand">{{ brand.name }}</div>
+            <a href="{{ url_for('dashboard') }}">Overview</a>
+            <a href="{{ url_for('dashboard_orders') }}">Orders</a>
+            <a href="{{ url_for('dashboard_test_drives') }}">Test Drives</a>
+            <a class="active" href="{{ url_for('dashboard_customers') }}">Customers</a>
+            <a href="{{ url_for('index') }}">Back to Site</a>
+        </aside>
+
+        <section class="dashboard-content">
+            <div class="dashboard-topbar">
+                <div>
+                    <span class="eyebrow">Customer Directory</span>
+                    <h1>Active customers</h1>
+                </div>
+            </div>
+
+            <div class="table-card premium-card">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>City</th>
+                            <th>Orders Count</th>
+                            <th>Last Activity</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for customer in customers %}
+                        <tr>
+                            <td>{{ customer.name }}</td>
+                            <td>{{ customer.email }}</td>
+                            <td>{{ customer.city }}</td>
+                            <td>{{ customer.orders_count }}</td>
+                            <td>{{ customer.last_activity }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

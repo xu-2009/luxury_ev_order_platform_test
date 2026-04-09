@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Models | {{ brand.name }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="site-header glass dark-header">
+        <div class="container nav-wrap">
+            <a class="brand-mark" href="{{ url_for('index') }}">{{ brand.name }}</a>
+            <nav class="main-nav">
+                <a href="{{ url_for('models') }}" class="active">Models</a>
+                <a href="{{ url_for('compare') }}">Compare</a>
+                <a href="{{ url_for('test_drive') }}">Test Drive</a>
+                <a href="{{ url_for('account_orders') }}">My Orders</a>
+                <a href="{{ url_for('dashboard') }}">Dashboard</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="page-shell">
+        <section class="page-hero slim-hero">
+            <div class="container">
+                <span class="eyebrow">Model Lineup</span>
+                <h1>Precision tailored for every expression of luxury EV ownership</h1>
+                <p>Explore the complete Aureon family, from executive sedan to dynamic performance grand tourer.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="catalog-grid">
+                    {% for model in models %}
+                    <article class="catalog-card premium-card">
+                        <div class="catalog-image gradient-{{ loop.index }}"></div>
+                        <div class="catalog-content">
+                            <div class="meta-line">
+                                <span>{{ model.range }}</span>
+                                <span>{{ model.acceleration }} 0-100</span>
+                            </div>
+                            <h2>{{ model.name }}</h2>
+                            <p class="catalog-tagline">{{ model.tagline }}</p>
+                            <p>{{ model.positioning }}</p>
+                            <div class="spec-inline">
+                                <span><strong>Range</strong> {{ model.range }}</span>
+                                <span><strong>Drive</strong> {{ model.drive_type }}</span>
+                                <span><strong>Seats</strong> {{ model.seating }}</span>
+                            </div>
+                            <div class="price-row">Starting at <strong>¥{{ "{:,.0f}".format(model.starting_price) }}</strong></div>
+                            <div class="card-actions">
+                                <a class="btn btn-secondary" href="{{ url_for('model_detail', slug=model.slug) }}">View Details</a>
+                                <a class="btn btn-primary" href="{{ url_for('configure', slug=model.slug) }}">Build Now</a>
+                            </div>
+                        </div>
+                    </article>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

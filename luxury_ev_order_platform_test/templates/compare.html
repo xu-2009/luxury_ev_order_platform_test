@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compare Models | {{ brand.name }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="site-header glass dark-header">
+        <div class="container nav-wrap">
+            <a class="brand-mark" href="{{ url_for('index') }}">{{ brand.name }}</a>
+            <nav class="main-nav">
+                <a href="{{ url_for('models') }}">Models</a>
+                <a href="{{ url_for('compare') }}" class="active">Compare</a>
+                <a href="{{ url_for('test_drive') }}">Test Drive</a>
+                <a href="{{ url_for('about') }}">About</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="page-shell">
+        <section class="page-hero slim-hero">
+            <div class="container">
+                <span class="eyebrow">Compare</span>
+                <h1>Choose the Aureon that fits your vision</h1>
+                <p>A refined comparison view for range, speed, practicality, and starting price.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="compare-wrap premium-card">
+                    <table class="compare-table">
+                        <thead>
+                            <tr>
+                                <th>Specification</th>
+                                {% for model in models %}
+                                <th>{{ model.name }}</th>
+                                {% endfor %}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Range</td>
+                                {% for model in models %}<td>{{ model.range }}</td>{% endfor %}
+                            </tr>
+                            <tr>
+                                <td>0-100 km/h</td>
+                                {% for model in models %}<td>{{ model.acceleration }}</td>{% endfor %}
+                            </tr>
+                            <tr>
+                                <td>Top Speed</td>
+                                {% for model in models %}<td>{{ model.top_speed }}</td>{% endfor %}
+                            </tr>
+                            <tr>
+                                <td>Seating</td>
+                                {% for model in models %}<td>{{ model.seating }}</td>{% endfor %}
+                            </tr>
+                            <tr>
+                                <td>Drive Type</td>
+                                {% for model in models %}<td>{{ model.drive_type }}</td>{% endfor %}
+                            </tr>
+                            <tr>
+                                <td>Starting Price</td>
+                                {% for model in models %}<td>¥{{ "{:,.0f}".format(model.starting_price) }}</td>{% endfor %}
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="compare-actions">
+                    {% for model in models %}
+                    <a class="btn btn-secondary" href="{{ url_for('configure', slug=model.slug) }}">Configure {{ model.name }}</a>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

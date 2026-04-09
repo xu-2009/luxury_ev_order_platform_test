@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | {{ brand.name }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <main class="dashboard-shell">
+        <aside class="dashboard-sidebar">
+            <div class="dashboard-brand">{{ brand.name }}</div>
+            <a class="active" href="{{ url_for('dashboard') }}">Overview</a>
+            <a href="{{ url_for('dashboard_orders') }}">Orders</a>
+            <a href="{{ url_for('dashboard_test_drives') }}">Test Drives</a>
+            <a href="{{ url_for('dashboard_customers') }}">Customers</a>
+            <a href="{{ url_for('index') }}">Back to Site</a>
+        </aside>
+
+        <section class="dashboard-content">
+            <div class="dashboard-topbar">
+                <div>
+                    <span class="eyebrow">Admin Demo</span>
+                    <h1>Operations overview</h1>
+                </div>
+            </div>
+
+            <div class="metrics-grid">
+                <div class="metric-card premium-card">
+                    <span>Total Orders</span>
+                    <strong>{{ total_orders }}</strong>
+                </div>
+                <div class="metric-card premium-card">
+                    <span>Pending Orders</span>
+                    <strong>{{ pending_orders }}</strong>
+                </div>
+                <div class="metric-card premium-card">
+                    <span>Test Drive Requests</span>
+                    <strong>{{ total_test_drives }}</strong>
+                </div>
+                <div class="metric-card premium-card">
+                    <span>Active Customers</span>
+                    <strong>{{ active_customers }}</strong>
+                </div>
+            </div>
+
+            <div class="dashboard-grid">
+                <div class="table-card premium-card">
+                    <div class="card-header">
+                        <h3>Recent Orders</h3>
+                    </div>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Customer</th>
+                                <th>Model</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for order in recent_orders %}
+                            <tr>
+                                <td>{{ order.order_id }}</td>
+                                <td>{{ order.customer }}</td>
+                                <td>{{ order.model }}</td>
+                                <td><span class="status {{ order.status|lower|replace(' ', '-') }}">{{ order.status }}</span></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="table-card premium-card">
+                    <div class="card-header">
+                        <h3>Upcoming Test Drives</h3>
+                    </div>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Customer</th>
+                                <th>Model</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in upcoming_test_drives %}
+                            <tr>
+                                <td>{{ item.customer }}</td>
+                                <td>{{ item.model }}</td>
+                                <td>{{ item.date }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="table-card premium-card wide">
+                    <div class="card-header">
+                        <h3>Top Models</h3>
+                    </div>
+                    <div class="top-models">
+                        {% for item in top_models %}
+                        <div class="top-model-row">
+                            <span>{{ item.name }}</span>
+                            <strong>{{ item.orders }} orders</strong>
+                            <em>{{ item.share }}</em>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

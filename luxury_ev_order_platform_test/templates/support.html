@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support | {{ brand.name }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="site-header glass dark-header">
+        <div class="container nav-wrap">
+            <a class="brand-mark" href="{{ url_for('index') }}">{{ brand.name }}</a>
+            <nav class="main-nav">
+                <a href="{{ url_for('models') }}">Models</a>
+                <a href="{{ url_for('test_drive') }}">Test Drive</a>
+                <a href="{{ url_for('support') }}" class="active">Support</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="page-shell">
+        <section class="page-hero slim-hero">
+            <div class="container">
+                <span class="eyebrow">Support & FAQ</span>
+                <h1>Answers for ordering, charging, ownership, and service</h1>
+                <p>Clear guidance for every stage of the Aureon ownership journey.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container faq-list">
+                {% for item in faqs %}
+                <article class="faq-item premium-card">
+                    <h3>{{ item.q }}</h3>
+                    <p>{{ item.a }}</p>
+                </article>
+                {% endfor %}
+            </div>
+        </section>
+    </main>
+</body>
+</html>
