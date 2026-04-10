@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joyce Xie | {{ page_title }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container nav-container">
+            <a class="brand" href="{{ url_for('index') }}">Joyce Xie</a>
+            <nav class="nav">
+                <a href="{{ url_for('index') }}">Home</a>
+                <a href="{{ url_for('about') }}">About</a>
+                <a href="{{ url_for('education') }}">Education</a>
+                <a href="{{ url_for('activities') }}">Activities</a>
+                <a href="{{ url_for('awards') }}">Awards</a>
+                <a href="{{ url_for('skills') }}">Skills</a>
+                <a href="{{ url_for('contact') }}" class="active">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="page-shell">
+        <section class="page-hero">
+            <div class="container">
+                <span class="eyebrow">Contact</span>
+                <h1>Get in touch</h1>
+                <p>The contact form is the preferred way to reach Joyce.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container contact-grid">
+                <div class="card contact-card">
+                    <h2>Contact Form</h2>
+
+                    {% if success %}
+                    <div class="alert-success">
+                        Thank you for your message. Your submission has been received successfully.
+                    </div>
+                    {% endif %}
+
+                    <form method="POST" action="{{ url_for('contact') }}" class="contact-form">
+                        <label for="name">Name</label>
+                        <input id="name" name="name" type="text" value="{{ form_data.name }}" required>
+
+                        <label for="email">Email</label>
+                        <input id="email" name="email" type="email" value="{{ form_data.email }}" required>
+
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="6" required>{{ form_data.message }}</textarea>
+
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+
+                <div class="card contact-info-card">
+                    <h2>Contact Information</h2>
+                    <div class="info-block">
+                        <h3>Location</h3>
+                        <p>Midvale, Utah</p>
+                    </div>
+                    <div class="info-block">
+                        <h3>Email</h3>
+                        <p><a href="mailto:joycexie842010@gmail.com">joycexie842010@gmail.com</a></p>
+                    </div>
+                    <div class="info-block">
+                        <h3>Privacy</h3>
+                        <p>For safety and privacy, full street address and personal phone number are not displayed publicly.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <p>Joyce Xie Portfolio</p>
+            <p>Midvale, Utah</p>
+        </div>
+    </footer>
+</body>
+</html>

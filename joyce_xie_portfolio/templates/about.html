@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joyce Xie | {{ page_title }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container nav-container">
+            <a class="brand" href="{{ url_for('index') }}">Joyce Xie</a>
+            <nav class="nav">
+                <a href="{{ url_for('index') }}">Home</a>
+                <a href="{{ url_for('about') }}" class="active">About</a>
+                <a href="{{ url_for('education') }}">Education</a>
+                <a href="{{ url_for('activities') }}">Activities</a>
+                <a href="{{ url_for('awards') }}">Awards</a>
+                <a href="{{ url_for('skills') }}">Skills</a>
+                <a href="{{ url_for('contact') }}">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="page-shell">
+        <section class="page-hero">
+            <div class="container">
+                <span class="eyebrow">About Joyce</span>
+                <h1>Driven by scholarship, leadership, and service</h1>
+                <p>
+                    Joyce Xie is a high-achieving student at Skyline High School whose record reflects intellectual curiosity,
+                    poise, initiative, and a sincere commitment to uplifting her school and community.
+                </p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container narrow">
+                <div class="card prose-card">
+                    <p>
+                        Expected to graduate in <strong>May 2028</strong>, Joyce has already developed an impressive profile
+                        defined by a <strong>strong academic record</strong>, impactful involvement in student organizations,
+                        and sustained participation in service-oriented initiatives.
+                    </p>
+                    <p>
+                        Her accomplishments are supported by a disciplined work ethic, thoughtful <strong>leadership</strong>,
+                        and polished <strong>communication skills</strong> that allow her to contribute effectively in competitive,
+                        collaborative, and public-facing settings.
+                    </p>
+                    <p>
+                        Whether representing her school in debate, helping organize student activities, or serving others through
+                        volunteer work, Joyce demonstrates a clear <strong>commitment to service</strong> and personal growth.
+                        She brings professionalism, resilience, and maturity to every responsibility she undertakes.
+                    </p>
+                    <p>
+                        Joyce’s portfolio reflects not only achievement, but also character: a student prepared to make meaningful
+                        contributions in college and beyond.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <p>Joyce Xie Portfolio</p>
+            <p>Midvale, Utah</p>
+        </div>
+    </footer>
+</body>
+</html>

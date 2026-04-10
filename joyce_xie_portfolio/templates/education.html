@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joyce Xie | {{ page_title }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container nav-container">
+            <a class="brand" href="{{ url_for('index') }}">Joyce Xie</a>
+            <nav class="nav">
+                <a href="{{ url_for('index') }}">Home</a>
+                <a href="{{ url_for('about') }}">About</a>
+                <a href="{{ url_for('education') }}" class="active">Education</a>
+                <a href="{{ url_for('activities') }}">Activities</a>
+                <a href="{{ url_for('awards') }}">Awards</a>
+                <a href="{{ url_for('skills') }}">Skills</a>
+                <a href="{{ url_for('contact') }}">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="page-shell">
+        <section class="page-hero">
+            <div class="container">
+                <span class="eyebrow">Education</span>
+                <h1>Academic preparation with rigor and consistency</h1>
+                <p>A strong educational foundation shaped by honors-level work, advanced coursework, and academic discipline.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="card education-card">
+                    <div class="education-header">
+                        <div>
+                            <h2>Skyline High School</h2>
+                            <p class="muted">Salt Lake City, Utah</p>
+                        </div>
+                        <div class="education-meta">
+                            <span class="pill">Expected Graduation: May 2028</span>
+                            <span class="pill">GPA: 3.9/4.0 UW</span>
+                        </div>
+                    </div>
+
+                    <div class="detail-grid">
+                        <div class="detail-item">
+                            <h3>Course Rigor</h3>
+                            <p>7 APs by end of year</p>
+                        </div>
+                        <div class="detail-item">
+                            <h3>Program</h3>
+                            <p>International Baccalaureate Program</p>
+                        </div>
+                        <div class="detail-item">
+                            <h3>Standing</h3>
+                            <p>Honors student</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <p>Joyce Xie Portfolio</p>
+            <p>Midvale, Utah</p>
+        </div>
+    </footer>
+</body>
+</html>

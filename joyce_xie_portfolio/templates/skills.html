@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joyce Xie | {{ page_title }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container nav-container">
+            <a class="brand" href="{{ url_for('index') }}">Joyce Xie</a>
+            <nav class="nav">
+                <a href="{{ url_for('index') }}">Home</a>
+                <a href="{{ url_for('about') }}">About</a>
+                <a href="{{ url_for('education') }}">Education</a>
+                <a href="{{ url_for('activities') }}">Activities</a>
+                <a href="{{ url_for('awards') }}">Awards</a>
+                <a href="{{ url_for('skills') }}" class="active">Skills</a>
+                <a href="{{ url_for('contact') }}">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="page-shell">
+        <section class="page-hero">
+            <div class="container">
+                <span class="eyebrow">Skills</span>
+                <h1>Practical strengths with academic and interpersonal value</h1>
+                <p>Joyce combines technical familiarity, multilingual ability, and dependable soft skills.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="card-grid three-up">
+                    <article class="card skill-card">
+                        <h2>Office Skills</h2>
+                        <ul class="bullet-list">
+                            <li>Proficient with Canva and Google Suite</li>
+                            <li>Created DECA and FBLA designs in Canva</li>
+                        </ul>
+                    </article>
+
+                    <article class="card skill-card">
+                        <h2>Language Skills</h2>
+                        <ul class="bullet-list">
+                            <li>Fluent in Mandarin Chinese (speaking, reading, writing)</li>
+                            <li>Proficient in French (French 4)</li>
+                        </ul>
+                    </article>
+
+                    <article class="card skill-card">
+                        <h2>Soft Skills</h2>
+                        <ul class="bullet-list">
+                            <li>Communication</li>
+                            <li>Resilience</li>
+                            <li>Stress management</li>
+                            <li>Time management</li>
+                            <li>Social media</li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <p>Joyce Xie Portfolio</p>
+            <p>Midvale, Utah</p>
+        </div>
+    </footer>
+</body>
+</html>

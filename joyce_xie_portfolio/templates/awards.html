@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joyce Xie | {{ page_title }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container nav-container">
+            <a class="brand" href="{{ url_for('index') }}">Joyce Xie</a>
+            <nav class="nav">
+                <a href="{{ url_for('index') }}">Home</a>
+                <a href="{{ url_for('about') }}">About</a>
+                <a href="{{ url_for('education') }}">Education</a>
+                <a href="{{ url_for('activities') }}">Activities</a>
+                <a href="{{ url_for('awards') }}" class="active">Awards</a>
+                <a href="{{ url_for('skills') }}">Skills</a>
+                <a href="{{ url_for('contact') }}">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="page-shell">
+        <section class="page-hero">
+            <div class="container">
+                <span class="eyebrow">Awards and Honors</span>
+                <h1>Recognition across academics, competition, and the arts</h1>
+                <p>A highly organized record of distinction at the regional, state, national, and international levels.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="card-grid two-up">
+                    <article class="card award-card">
+                        <div class="award-head">
+                            <h2>Speech and Debate</h2>
+                            <span class="pill">NSDA | Regional, State, National</span>
+                        </div>
+                        <ul class="bullet-list">
+                            <li>Top 10 at numerous tournaments</li>
+                            <li>First place at multiple tournaments</li>
+                            <li>First place at UCDA Speech Arts 2025</li>
+                            <li>Nationals qualifier 2026</li>
+                        </ul>
+                    </article>
+
+                    <article class="card award-card">
+                        <div class="award-head">
+                            <h2>Future Problem Solving</h2>
+                            <span class="pill">State, National</span>
+                        </div>
+                        <ul class="bullet-list">
+                            <li>2x national qualifier</li>
+                            <li>2x State champions (skit and packet)</li>
+                            <li>3rd place in scenario writing</li>
+                        </ul>
+                    </article>
+
+                    <article class="card award-card">
+                        <div class="award-head">
+                            <h2>Piano</h2>
+                            <span class="pill">Local</span>
+                        </div>
+                        <ul class="bullet-list">
+                            <li>The Utah Federation</li>
+                            <li>Played at multiple local recitals (Dayne’s Music)</li>
+                        </ul>
+                    </article>
+
+                    <article class="card award-card">
+                        <div class="award-head">
+                            <h2>FBLA</h2>
+                            <span class="pill">Regional, State, National</span>
+                        </div>
+                        <ul class="bullet-list">
+                            <li>NLC qualifier</li>
+                            <li>First place at state conference for Digital Animation</li>
+                            <li>Second place at state conference for Introduction to Parliamentary Procedure</li>
+                            <li>Fifth place at state conference for Introduction to FBLA</li>
+                            <li>Numerous placements on the regional level</li>
+                        </ul>
+                    </article>
+
+                    <article class="card award-card full-span">
+                        <div class="award-head">
+                            <h2>DECA</h2>
+                            <span class="pill">Regional, State, International</span>
+                        </div>
+                        <ul class="bullet-list">
+                            <li>2x ICDC qualifier</li>
+                            <li>2x second place for Integrated Marketing Campaign- Product</li>
+                            <li>Top 10 at state conference for Marketing Communications</li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <p>Joyce Xie Portfolio</p>
+            <p>Midvale, Utah</p>
+        </div>
+    </footer>
+</body>
+</html>

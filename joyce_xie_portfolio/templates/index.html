@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joyce Xie | {{ page_title }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container nav-container">
+            <a class="brand" href="{{ url_for('index') }}">Joyce Xie</a>
+            <nav class="nav">
+                <a href="{{ url_for('index') }}" class="active">Home</a>
+                <a href="{{ url_for('about') }}">About</a>
+                <a href="{{ url_for('education') }}">Education</a>
+                <a href="{{ url_for('activities') }}">Activities</a>
+                <a href="{{ url_for('awards') }}">Awards</a>
+                <a href="{{ url_for('skills') }}">Skills</a>
+                <a href="{{ url_for('contact') }}">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container hero-grid">
+                <div class="hero-content">
+                    <span class="eyebrow">Student Achievement Portfolio</span>
+                    <h1>Joyce Xie</h1>
+                    <p class="hero-subtitle">Student Leader, Competitor, and Community Contributor</p>
+                    <p class="hero-text">
+                        A dedicated high-achieving student distinguished by academic excellence, leadership across campus organizations,
+                        and a meaningful commitment to service and community impact.
+                    </p>
+                    <div class="hero-actions">
+                        <a class="btn btn-primary" href="{{ url_for('awards') }}">View Accomplishments</a>
+                        <a class="btn btn-secondary" href="{{ url_for('contact') }}">Contact Joyce</a>
+                    </div>
+                </div>
+                <div class="hero-panel card">
+                    <h2>At a Glance</h2>
+                    <ul class="key-facts">
+                        <li><strong>School:</strong> Skyline High School</li>
+                        <li><strong>Graduation:</strong> Expected May 2028</li>
+                        <li><strong>GPA:</strong> 3.9/4.0 UW</li>
+                        <li><strong>Location:</strong> Midvale, Utah</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="section-heading">
+                    <span class="eyebrow">Featured Highlights</span>
+                    <h2>A portfolio built on excellence, initiative, and growth</h2>
+                </div>
+                <div class="card-grid three-up">
+                    <article class="card feature-card">
+                        <div class="card-icon">A</div>
+                        <h3>Academics</h3>
+                        <p>
+                            Strong academic performance supported by a 3.9 unweighted GPA, rigorous coursework,
+                            participation in the International Baccalaureate Program, and 7 APs by the end of the year.
+                        </p>
+                    </article>
+                    <article class="card feature-card">
+                        <div class="card-icon">L</div>
+                        <h3>Leadership</h3>
+                        <p>
+                            Leadership through Key Club service, Business Club recruitment efforts, and co-founding
+                            the Skyline Badminton Club while contributing across multiple school organizations.
+                        </p>
+                    </article>
+                    <article class="card feature-card">
+                        <div class="card-icon">W</div>
+                        <h3>Awards</h3>
+                        <p>
+                            Recognition across Speech and Debate, Future Problem Solving, FBLA, DECA, and piano,
+                            including state championships, national qualifications, and first-place finishes.
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <p>Joyce Xie Portfolio</p>
+            <p>Midvale, Utah</p>
+        </div>
+    </footer>
+</body>
+</html>

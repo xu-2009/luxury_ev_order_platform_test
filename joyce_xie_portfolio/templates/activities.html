@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joyce Xie | {{ page_title }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container nav-container">
+            <a class="brand" href="{{ url_for('index') }}">Joyce Xie</a>
+            <nav class="nav">
+                <a href="{{ url_for('index') }}">Home</a>
+                <a href="{{ url_for('about') }}">About</a>
+                <a href="{{ url_for('education') }}">Education</a>
+                <a href="{{ url_for('activities') }}" class="active">Activities</a>
+                <a href="{{ url_for('awards') }}">Awards</a>
+                <a href="{{ url_for('skills') }}">Skills</a>
+                <a href="{{ url_for('contact') }}">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="page-shell">
+        <section class="page-hero">
+            <div class="container">
+                <span class="eyebrow">Activities</span>
+                <h1>Service, involvement, and campus leadership</h1>
+                <p>Joyce’s activities reflect initiative, sustained participation, and a commitment to both school and community.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="section-heading left">
+                    <h2>Volunteerism</h2>
+                </div>
+
+                <div class="stack">
+                    <article class="card timeline-card">
+                        <div class="entry-header">
+                            <div>
+                                <h3>中美友谊桥</h3>
+                                <p class="muted">Member | Salt Lake City, Utah</p>
+                            </div>
+                            <span class="pill">Feb. 2025-present</span>
+                        </div>
+                        <ul class="bullet-list">
+                            <li>Volunteered weekly to teach underprivileged Chinese students English</li>
+                            <li>Organized monthly culture events</li>
+                        </ul>
+                    </article>
+
+                    <article class="card timeline-card">
+                        <div class="entry-header">
+                            <div>
+                                <h3>Knowledge Tree Institute</h3>
+                                <p class="muted">Member | Salt Lake City, Utah</p>
+                            </div>
+                            <span class="pill">Sep. 2024-Dec. 2024</span>
+                        </div>
+                        <ul class="bullet-list">
+                            <li>Knitted hats for U of U hospital patients</li>
+                            <li>Picked up trash in parks</li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section-alt">
+            <div class="container">
+                <div class="section-heading left">
+                    <h2>School Extracurricular Activities</h2>
+                </div>
+
+                <div class="stack">
+                    <article class="card timeline-card">
+                        <div class="entry-header">
+                            <div>
+                                <h3>Skyline Women’s Basketball</h3>
+                                <p class="muted">Member</p>
+                            </div>
+                            <span class="pill">Oct. 2024-Mar. 2024</span>
+                        </div>
+                        <ul class="bullet-list">
+                            <li>Regular participation every day during the season</li>
+                            <li>Traveled to multiple different schools</li>
+                        </ul>
+                    </article>
+
+                    <article class="card timeline-card">
+                        <div class="entry-header">
+                            <div>
+                                <h3>Skyline Speech and Debate</h3>
+                                <p class="muted">Member</p>
+                            </div>
+                            <span class="pill">Aug. 2024-present</span>
+                        </div>
+                        <ul class="bullet-list">
+                            <li>Competed at all eligible tournaments</li>
+                            <li>Represented the school at multiple districts</li>
+                            <li>Public Forum</li>
+                            <li>Judged middle school and elementary debate</li>
+                        </ul>
+                    </article>
+
+                    <article class="card timeline-card">
+                        <div class="entry-header">
+                            <div>
+                                <h3>Skyline Business Club</h3>
+                                <p class="muted">Recruitment Committee</p>
+                            </div>
+                            <span class="pill">Aug. 2024-present</span>
+                        </div>
+                        <ul class="bullet-list">
+                            <li>Participated in all eligible competitions</li>
+                            <li>Participated in fundraising for ICDC and NLC</li>
+                        </ul>
+                    </article>
+
+                    <article class="card timeline-card">
+                        <div class="entry-header">
+                            <div>
+                                <h3>Skyline Badminton Club</h3>
+                                <p class="muted">Co-founder, Member</p>
+                            </div>
+                            <span class="pill">Aug. 2024-present</span>
+                        </div>
+                        <ul class="bullet-list">
+                            <li>Hosted regular badminton sessions</li>
+                        </ul>
+                    </article>
+
+                    <article class="card timeline-card">
+                        <div class="entry-header">
+                            <div>
+                                <h3>Skyline Key Club</h3>
+                                <p class="muted">Secretary</p>
+                            </div>
+                            <span class="pill">Aug. 2024-present</span>
+                        </div>
+                        <ul class="bullet-list">
+                            <li>Hosted regular bi-weekly meetings</li>
+                            <li>Participated in service projects</li>
+                            <li>Collaborated with surrounding communities to fundraise and collect food and clothing</li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <p>Joyce Xie Portfolio</p>
+            <p>Midvale, Utah</p>
+        </div>
+    </footer>
+</body>
+</html>
