@@ -51,6 +51,29 @@
                 <p class="empty-text">暂无反馈记录。</p>
                 {% endif %}
             </div>
+
+            <div class="card admin-full">
+                <h1>课程预约记录</h1>
+                {% if booking_records %}
+                <div class="table-like">
+                    {% for item in booking_records %}
+                    <div class="record-card">
+                        <div><strong>学员姓名：</strong>{{ item.student_name }}</div>
+                        <div><strong>电话：</strong>{{ item.phone }}</div>
+                        <div><strong>教练：</strong>{{ item.coach_name }}</div>
+                        <div><strong>课程类型：</strong>{{ item.class_type }}</div>
+                        <div><strong>日期：</strong>{{ item.preferred_date }}</div>
+                        <div><strong>时间：</strong>{{ item.preferred_time }}</div>
+                        {% if item.notes %}
+                        <div><strong>备注：</strong>{{ item.notes }}</div>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <p class="empty-text">暂无课程预约记录。</p>
+                {% endif %}
+            </div>
         </section>
     </main>
 </body>

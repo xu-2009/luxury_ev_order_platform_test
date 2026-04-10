@@ -11,7 +11,7 @@
         <div class="container">
             <div class="brand">Swimming Check-in and Feedback System</div>
             <h1>沈阳建筑大学游泳馆课程服务系统</h1>
-            <p class="subtitle">签到、反馈与到馆指引一体化服务</p>
+            <p class="subtitle">签到、反馈、预约与到馆指引一体化服务</p>
         </div>
     </header>
 
@@ -19,11 +19,12 @@
         <section class="hero-card">
             <h2>欢迎使用课程服务系统</h2>
             <p>
-                本系统面向前来参加游泳课程的学员，当前版本提供签到打卡、用户反馈和到馆导航说明等基础功能，
-                便于线下教学服务快速开展。
+                本系统面向前来参加游泳课程的学员，当前版本提供签到打卡、用户反馈、课程预约和到馆导航说明等服务，
+                便于线下教学服务快速开展，提升课程接待与管理效率。
             </p>
             <div class="button-grid">
                 <a class="button primary" href="{{ url_for('checkin') }}">学员签到</a>
+                <a class="button" href="{{ url_for('booking') }}">预约课程</a>
                 <a class="button" href="{{ url_for('feedback') }}">用户反馈</a>
                 <a class="button" href="{{ url_for('navigation') }}">到馆导航</a>
                 <a class="button" href="{{ url_for('admin') }}">管理查看</a>
@@ -36,12 +37,35 @@
                 <p>支持学员提交姓名、电话和课程信息，现场快速完成签到记录。</p>
             </div>
             <div class="card">
+                <h3>课程预约</h3>
+                <p>支持提前提交预约意向，选择教练、课程类型与期望上课时间，便于统一安排。</p>
+            </div>
+            <div class="card">
                 <h3>意见反馈</h3>
                 <p>支持提交课程体验、服务建议和满意度评分，方便后续持续优化。</p>
             </div>
             <div class="card">
                 <h3>到馆说明</h3>
                 <p>当前版本提供文字指引，后续将接入地图或校内导航入口。</p>
+            </div>
+        </section>
+
+        <section class="card coach-section">
+            <div class="section-head">
+                <h2>教练团队</h2>
+                <p class="section-desc">专业教练团队提供启蒙教学、泳姿提升与专项训练服务，满足不同年龄和阶段学员的学习需求。</p>
+            </div>
+
+            <div class="coach-grid">
+                {% for coach in coach_team %}
+                <div class="coach-card">
+                    <div class="coach-badge">资深教练</div>
+                    <h3>{{ coach.name }}</h3>
+                    <p><strong>教学方向：</strong>{{ coach.specialty }}</p>
+                    <p><strong>资质/证书：</strong>{{ coach.certification }}</p>
+                    <p><strong>简介：</strong>{{ coach.intro }}</p>
+                </div>
+                {% endfor %}
             </div>
         </section>
     </main>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>预约课程 - 沈阳建筑大学游泳馆课程服务系统</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="topbar">
+        <div class="container topbar-inner">
+            <a class="back-link" href="{{ url_for('index') }}">返回首页</a>
+            <div class="page-title">预约课程</div>
+        </div>
+    </header>
+
+    <main class="container narrow">
+        <section class="card booking-card">
+            <h1>课程预约申请</h1>
+            <p class="section-desc">
+                请填写学员信息、预约教练与期望上课时间。提交后系统将记录您的预约需求，工作人员会进一步确认安排。
+            </p>
+
+            {% if success_message %}
+            <div class="alert success booking-success">{{ success_message }}</div>
+            {% endif %}
+
+            <form class="form booking-form" method="post" action="{{ url_for('booking') }}">
+                <label for="student_name">学员姓名</label>
+                <input type="text" id="student_name" name="student_name" placeholder="请输入学员姓名" required>
+
+                <label for="phone">联系电话</label>
+                <input type="text" id="phone" name="phone" placeholder="请输入联系电话" required>
+
+                <label for="coach_name">预约教练</label>
+                <select id="coach_name" name="coach_name" required>
+                    <option value="">请选择教练</option>
+                    {% for coach in coach_team %}
+                    <option value="{{ coach.name }}">{{ coach.name }} - {{ coach.specialty }}</option>
+                    {% endfor %}
+                </select>
+
+                <label for="class_type">课程类型</label>
+                <select id="class_type" name="class_type" required>
+                    <option value="">请选择课程类型</option>
+                    <option value="少儿启蒙班">少儿启蒙班</option>
+                    <option value="成人基础班">成人基础班</option>
+                    <option value="蛙泳提高班">蛙泳提高班</option>
+                    <option value="自由泳提升班">自由泳提升班</option>
+                    <option value="考试专项训练">考试专项训练</option>
+                    <option value="一对一私教课">一对一私教课</option>
+                </select>
+
+                <label for="preferred_date">期望日期</label>
+                <input type="date" id="preferred_date" name="preferred_date" required>
+
+                <label for="preferred_time">期望时间</label>
+                <input type="time" id="preferred_time" name="preferred_time" required>
+
+                <label for="notes">备注说明</label>
+                <textarea id="notes" name="notes" rows="4" placeholder="可填写学员基础情况、学习目标或其他说明"></textarea>
+
+                <button class="button primary full" type="submit">提交预约</button>
+            </form>
+        </section>
+    </main>
+</body>
+</html>
